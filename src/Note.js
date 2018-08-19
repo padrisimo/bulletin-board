@@ -30,7 +30,7 @@ export default class Note extends Component {
   renderDisplay = () => {
     return (
       <div className="note">
-        <p>note stuff</p>
+        <p>{this.props.children}</p>
         <span>
           <button onClick={this.remove} id="remove"><FaTrash /></button>
           <button onClick={this.edit} id="edit"><FaPencilAlt /></button>
