@@ -15,13 +15,13 @@ export default class Note extends Component {
   }
 
   save = () => {
-    alert('saved');
+    alert(this._newText.value);
   };
 
   renderForm = () => (
     <div className="note">
       <form>
-        <textarea />
+        <textarea ref={input => this._newText = input} />
         <button onClick={this.save}><FaSave /></button>
       </form>
     </div>
@@ -40,6 +40,6 @@ export default class Note extends Component {
   }
 
   render(){
-    return this.state.editing ? this.renderForm : this.renderDisplay;
+    return this.state.editing ? this.renderForm() : this.renderDisplay();
   }
 }
