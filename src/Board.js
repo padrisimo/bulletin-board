@@ -7,6 +7,15 @@ export default class Board extends Component {
     notes: []
   }
 
+  componentWillMount = () => {
+    if(this.props.count){
+      fetch(`https://baconipsum.com/api/?type=all-meat&sentences=50`)
+        .then(response => response.json())
+        .then(json => json[0].split('. ').map(sentence => this.add(sentence.substring(0, 25))))
+    }
+  }
+  
+
   add = text => {
     this.setState(prevState => ({
       notes: [
