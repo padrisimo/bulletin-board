@@ -9,7 +9,7 @@ export default class Board extends Component {
 
   componentWillMount = () => {
     if(this.props.count){
-      fetch(`https://baconipsum.com/api/?type=all-meat&sentences=50`)
+      fetch(`https://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`)
         .then(response => response.json())
         .then(json => json[0].split('. ').map(sentence => this.add(sentence.substring(0, 25))))
     }
@@ -49,7 +49,7 @@ export default class Board extends Component {
 
   eachNote = (note, i) => (
     <Note key={note.id}
-      index={i}
+      index={note.id}
       onRemove={this.remove}
       onChange={this.update}>
       {note.note}
